@@ -1,34 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tharnaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/12 19:40:35 by tharnaud          #+#    #+#             */
-/*   Updated: 2022/10/05 14:26:14 by tharnaud         ###   ########.fr       */
+/*   Created: 2022/10/05 12:20:27 by tharnaud          #+#    #+#             */
+/*   Updated: 2022/10/05 13:44:06 by tharnaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <unistd.h>
 
-size_t	ft_strlcpy(char *dst, char *src, size_t dstsize)
+size_t	ft_strlen(const char *s)
 {
 	size_t	i;
-	size_t	count;
 
-	count = 0;
 	i = 0;
-	if (dstsize != 0)
-	{
-		while (i < dstsize - 1 && src[i] != '\0')
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	while (src[count] != '\0')
-		count++;
-	return (count);
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }

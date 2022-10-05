@@ -1,34 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_isprint.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tharnaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/12 19:40:35 by tharnaud          #+#    #+#             */
-/*   Updated: 2022/10/05 14:26:14 by tharnaud         ###   ########.fr       */
+/*   Created: 2022/10/05 12:18:22 by tharnaud          #+#    #+#             */
+/*   Updated: 2022/10/05 12:20:08 by tharnaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
-
-size_t	ft_strlcpy(char *dst, char *src, size_t dstsize)
+int	ft_isprint(int c)
 {
-	size_t	i;
-	size_t	count;
-
-	count = 0;
-	i = 0;
-	if (dstsize != 0)
-	{
-		while (i < dstsize - 1 && src[i] != '\0')
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
-	}
-	while (src[count] != '\0')
-		count++;
-	return (count);
+	if (c >= 32 && c <= 126)
+		return (1);
+	else
+		return (0);
 }

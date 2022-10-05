@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tharnaud <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/09/12 19:40:35 by tharnaud          #+#    #+#             */
-/*   Updated: 2022/10/05 14:26:14 by tharnaud         ###   ########.fr       */
+/*   Created: 2022/10/05 17:09:01 by tharnaud          #+#    #+#             */
+/*   Updated: 2022/10/05 18:07:20 by tharnaud         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <unistd.h>
 
-size_t	ft_strlcpy(char *dst, char *src, size_t dstsize)
+void	*ft_memmove(void *dst, const void *src, size_t len)
 {
 	size_t	i;
-	size_t	count;
 
-	count = 0;
-	i = 0;
-	if (dstsize != 0)
+	if (!dst && !src)
+		return (0);
+	i = -1;
+	if (dst < src)
 	{
-		while (i < dstsize - 1 && src[i] != '\0')
-		{
-			dst[i] = src[i];
-			i++;
-		}
-		dst[i] = '\0';
+		while (++i < len)
+			*(unsigned char*)(dst + i) = *(unsigned char*)(src + i);
 	}
-	while (src[count] != '\0')
-		count++;
-	return (count);
+	else while (len--)
+		*(unsigned char*)(dst + (len - 1)) = *(unsigned char*)(src + (len - 1));
+	return (dst);
 }
